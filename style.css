@@ -1,0 +1,141 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffebee;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 10;
+}
+
+.book {
+    box-shadow: 0 30px 120px rgba(0,0,0,0.5);
+    background: white;
+    visibility: hidden;
+}
+
+.page {
+    background-color: white;
+    border: 1px solid #fce4ec;
+}
+
+/* --- CORRECCIÓN: TODO HACIA ARRIBA --- */
+.page-content {
+    padding: 20px 60px; /* Reducido al mínimo el espacio de arriba */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Empuja todo el contenido al inicio (arriba) */
+    text-align: center;
+}
+
+/* --- PORTADA: Mantiene su estilo centrado --- */
+.page-cover {
+    background-color: #d81b60 !important;
+}
+
+    .page-cover .page-content {
+        justify-content: center !important; /* La portada se queda centrada para que luzca mejor */
+    }
+
+    .page-cover h1,
+    .page-cover p {
+        color: white !important;
+    }
+
+/* --- TÍTULOS: SUBIENDO AL MÁXIMO --- */
+h1, h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #ad1457;
+    margin-top: 0px !important; /* Elimina cualquier margen superior */
+    margin-bottom: 0px; /* Espacio mínimo con la foto */
+    line-height: 1; /* Cierra el espacio invisible de la fuente */
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.2rem;
+}
+
+/* --- TEXTO DE ABAJO: Subiendo también --- */
+p {
+    font-size: 1.5rem;
+    color: #555;
+    margin-top: 0px !important;
+    margin-bottom: 5px;
+    line-height: 1; /* Cierra el espacio invisible de la fuente */
+}
+
+/* --- CAJA DE MEDIOS AJUSTADA --- */
+.img-box {
+    width: 100%;
+    max-height: 650px; /* Le damos un límite máximo para que no se salga de la página */
+    margin: 5px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex; /* Ayuda a centrar si la foto es más pequeña */
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* Quitamos el fondo negro */
+}
+
+    /* --- ESTO HARÁ QUE SE VEA COMPLETA Y GRANDE --- */
+    .img-box img,
+    .img-box video {
+        width: 100%;
+        height: auto; /* Que el alto se ajuste solo para no deformarse */
+        max-height: 650px; /* Que no sobrepase el tamaño de la página */
+        object-fit: contain; /* Asegura que se vea TODO sin cortes */
+    }
+
+/* --- LLUVIA DE CORAZONES --- */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart-drop {
+    position: absolute;
+    color: #ff4081;
+    font-size: 25px;
+    user-select: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
